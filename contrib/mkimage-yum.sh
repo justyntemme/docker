@@ -70,6 +70,9 @@ mknod -m 666 "$target"/dev/tty0 c 4 0
 mknod -m 666 "$target"/dev/urandom c 1 9
 mknod -m 666 "$target"/dev/zero c 1 5
 
+# allow x86 machine to use yum
+cp /etc/rpm/platform "$target"/etc/rpm/platform
+
 # amazon linux yum will fail without vars set
 if [ -d /etc/yum/vars ]; then
 	mkdir -p -m 755 "$target"/etc/yum
