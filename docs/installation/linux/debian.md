@@ -37,15 +37,15 @@ Docker is supported on the following versions of Debian:
      $ uname -r
 
  Additionally, for users of Debian Wheezy, backports must be available. To enable backports in Wheezy:
- 
+
  1. Log into your machine and open a terminal with `sudo` or `root` privileges.
- 
+
  2. Open the `/etc/apt/sources.list.d/backports.list` file in your favorite editor.
 
      If the file doesn't exist, create it.
- 
+
  3. Remove any existing entries.
- 
+
  4. Add an entry for backports on Debian Wheezy.
 
      An example entry:
@@ -67,8 +67,8 @@ from the new repository:
 
  3. Purge any older repositories.
 
-         $ apt-get purge lxc-docker*
-         $ apt-get purge docker.io*
+         $ apt-get purge "lxc-docker*"
+         $ apt-get purge "docker.io*"
 
  4. Update package information, ensure that APT works with the `https` method, and that CA certificates are installed.
 
@@ -77,7 +77,7 @@ from the new repository:
 
  5. Add the new `GPG` key.
 
-         $ apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+         $ apt-key adv --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 58118 E89F3A912897C070ADBF76221572C52609D
 
  6. Open the `/etc/apt/sources.list.d/docker.list` file in your favorite editor.
 
@@ -132,7 +132,7 @@ Before installing Docker, make sure you have set your `APT` repository correctly
 
 5. Start the `docker` daemon.
 
-        $ sudo service docker start
+        $ sudo systemctl start docker
 
 6. Verify `docker` is installed correctly.
 
@@ -173,7 +173,7 @@ use the `-G` flag to specify an alternative group.
     $ sudo gpasswd -a ${USER} docker
 
     # Restart the Docker daemon.
-    $ sudo service docker restart
+    $ sudo systemctl restart docker
 
 ## Upgrade Docker
 
